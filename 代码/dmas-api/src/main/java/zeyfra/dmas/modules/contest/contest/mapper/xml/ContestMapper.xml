@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="zeyfra.dmas.modules.contest.contest.mapper.ContestMapper">
+
+    <resultMap id="ListResultMap" type="zeyfra.dmas.modules.contest.contest.entity.Contest">
+        <id column="contest_id" property="contestId"/>
+        <result column="contest_name" property="contestName"/>
+        <result column="contest_site" property="contestSite"/>
+        <result column="contest_team_num" property="contestTeamNum"/>
+        <result column="contest_ak_num" property="contestAkNum"/>
+        <result column="contest_time" property="contestTime"/>
+
+    </resultMap>
+
+
+    <select id="paging" resultMap="ListResultMap">
+        select * from contest
+    </select>
+
+    <select id="getProblemList" resultType="zeyfra.dmas.modules.contest.problem.entity.Problem">
+        select * from problem where problem_id
+                                        in (select problem_id from contest_problem where contest_id = #{contestId})
+    </select>
+
+    <select id="getMyTeamNum" resultType="java.lang.Integer">
+        select count(*) from contest_member where contest_id = #{contestId}
+    </select>
+
+    <select id="getContestProblemName" resultType="java.lang.String">
+        select problem_name from problem where problem_id in (select problem_id from contest_problem where contest_id = #{contestId})
+    </select>
+
+    <select id="getContestMemberList" resultType="zeyfra.dmas.modules.member.entity.Member">
+        select * from member where member_id in (select member_id from contest_member where contest_id = #{contestId})
+    </select>
+    <!-- 对应的problemId、 -->
+    <select id="getProblemMember" resultType="zeyfra.dmas.modules.contest.problem_member.entity.ProblemMember">
+        select * from problem_member where member_id = #{memberId}
+                                     and problem_id = #{problemId}
+    </select>
+
+    <select id="getRank" resultType="java.lang.String">
+        select rank from contest_member where member_id = #{member_id} and contest_id = #{contestId}
+    </select>
+
+    <select id="queryContest" resultMap="ListResultMap">
+        select * from contest where contest_name like CONCAT('%',#{contestName},'%') and contest_time like CONCAT('%',#{contestTime},'%')
+    </select>
+
+    <select id="queryContestByContestTime" resultMap="ListResultMap">
+        select * from contest where contest_time like CONCAT('%',#{contestTime},'%')
+    </select>
+
+    <select id="queryContestByContestName" resultMap="ListResultMap">
+        select * from contest where contest_name like CONCAT('%',#{contestName},'%')
+    </select>
+
+</mapper>

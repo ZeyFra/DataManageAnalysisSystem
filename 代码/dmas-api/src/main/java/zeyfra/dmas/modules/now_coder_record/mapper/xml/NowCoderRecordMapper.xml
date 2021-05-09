@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="zeyfra.dmas.modules.now_coder_record.mapper.NowCoderRecordMapper">
+    <resultMap id="ListResultMap" type="zeyfra.dmas.modules.now_coder_record.entity.NowCoderRecord">
+        <id column="now_coder_record_id" property="nowCoderRecordId"/>
+        <result column="contest_name" property="contestName"/>
+        <result column="contest_id" property="contestId"/>
+        <result column="logo_url" property="logoUrl"/>
+        <result column="team_name" property="teamName"/>
+        <result column="member_id" property="memberId"/>
+        <result column="problem_count" property="problemCount"/>
+        <result column="accept_count" property="acceptCount"/>
+        <result column="rank" property="rank"/>
+        <result column="user_count" property="userCount"/>
+        <result column="start_time" property="startTime"/>
+        <result column="end_time" property="endTime"/>
+        <result column="contest_duration" property="contestDuration"/>
+    </resultMap>
+
+    <select id="paging" resultMap="ListResultMap">
+        select * from now_coder_record where member_id = #{memberId} order by start_time desc
+    </select>
+</mapper>

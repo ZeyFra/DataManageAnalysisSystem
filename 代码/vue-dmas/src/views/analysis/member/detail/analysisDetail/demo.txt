@@ -1,0 +1,160 @@
+
+option = {
+    title: {
+        text: '天气情况统计',
+        subtext: '虚构数据',
+        left: 'center'
+    },
+    tooltip: {
+        trigger: 'item',
+        formatter: '{b} : {c} ({d}%)'
+    },
+    legend: {
+        bottom: 10,
+        left: 'center',
+        data: ['国家级奖项', '省级奖项']
+    },
+    series: [
+        {
+            type: 'pie',
+            radius: '65%',
+            center: ['50%', '50%'],
+            selectedMode: 'single',
+            data: [
+                {
+                    value: 123,
+                    name: '国家级奖项',
+                    label: {
+                        formatter: [
+                            '{title|{b}}{abg|}',
+                            '  {PrizeNumHead|奖项数}{RateHead|占比}',
+                            '{hr|}',
+                            '  {PrizeNum|'+'asda'+'}{rate|'+55.3+'%}',
+                            '  {PrizeNum|'+'asda'+'}{rate|'+55.3+'%}',
+                            '  {PrizeNum|'+'asda'+'}{rate|'+55.3+'%}',
+                        ].join('\n'),
+                        backgroundColor: '#eee',
+                        borderColor: '#777',
+                        borderWidth: 1,
+                        borderRadius: 4,
+                        rich: {
+                            title: {
+                                color: '#eee',
+                                align: 'center'
+                            },
+                            abg: {
+                                backgroundColor: '#333',
+                                width: '100%',
+                                align: 'right',
+                                height: 25,
+                                borderRadius: [4, 4, 0, 0]
+                            },
+                            PrizeNum: {
+                                height: 30,
+                                align: 'left'
+                            },
+
+                            PrizeNumHead: {
+                                color: '#333',
+                                height: 24,
+                                align: 'left'
+                            },
+                            hr: {
+                                borderColor: '#777',
+                                width: '100%',
+                                borderWidth: 0.5,
+                                height: 0
+                            },
+                            rate: {
+                                width: 40,
+                                align: 'right',
+                                padding: [0, 10, 0, 0]
+                            },
+                            RateHead: {
+                                color: '#333',
+                                width: 40,
+                                align: 'center',
+                                padding: [0, 10, 0, 0]
+                            }
+                        }
+                    }
+                },
+                {
+                    value: 60,
+                    name: '省级奖项',
+                    label: {
+                        formatter: [
+                            '{title|{b}}{abg|}',
+                            '  {LevelHead|获奖等级}{PrizeNumHead|奖项数}{RateHead|占比}',
+                            '{hr|}',
+                            '  {level|一等奖}{PrizeNum|'+35+'}{rate|'+55.3+'%}',
+                            '  {level|一等奖}{PrizeNum|'+13+'}{rate|'+55.3+'%}',
+                            '  {level|一等奖}{PrizeNum|'+17+'}{rate|'+55.3+'%}'
+                        ].join('\n'),
+                        backgroundColor: '#eee',
+                        borderColor: '#777',
+                        borderWidth: 1,
+                        borderRadius: 4,
+                        rich: {
+                            title: {
+                                color: '#eee',
+                                align: 'center'
+                            },
+                            abg: {
+                                backgroundColor: '#333',
+                                width: '100%',
+                                align: 'right',
+                                height: 25,
+                                borderRadius: [4, 4, 0, 0]
+                            },
+                            level: {
+                                height: 30,
+                                align: 'left',
+                            },
+                            LevelHead: {
+                                color: '#333',
+                                height: 24,
+                                align: 'left'
+                            },
+                            PrizeNum: {
+                                width: 20,
+                                padding: [0, 20, 0, 30],
+                                align: 'center'
+                            },
+                            PrizeNumHead: {
+                                color: '#333',
+                                width: 20,
+                                padding: [0, 20, 0, 30],
+                                align: 'center'
+                            },
+                            rate: {
+                                width: 40,
+                                align: 'right',
+                                padding: [0, 10, 0, 0]
+                            },
+                            RateHead: {
+                                color: '#333',
+                                width: 40,
+                                align: 'center',
+                                padding: [0, 10, 0, 0]
+                            },
+                            hr: {
+                                borderColor: '#777',
+                                width: '100%',
+                                borderWidth: 0.5,
+                                height: 0
+                            }
+                        }
+                    }
+                }
+            ],
+            emphasis: {
+                itemStyle: {
+                    shadowBlur: 10,
+                    shadowOffsetX: 0,
+                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                }
+            }
+        }
+    ]
+};
